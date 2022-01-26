@@ -1,0 +1,7 @@
+---
+- name: Init KSM
+  hosts: all
+  collections: keepersecurity.keeper_secrets_manager
+
+  roles:
+    - keeper_init_token
