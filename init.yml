@@ -1,6 +1,7 @@
 ---
 - name: Init KSM
-  hosts: all
+  hosts: localhost
+  connection: local
   collections: keepersecurity.keeper_secrets_manager
 
   roles:
