@@ -1,25 +1,26 @@
 ---
 - name: Playbook One
   hosts: all
-  collections: keepersecurity.keeper_secrets_manager
+  collections:
+    - keepersecurity.keeper_secrets_manager
 
   tasks:
     - include_vars:
         file: "defaults/secrets.yml"
       no_log: True
 
-    - name: "Make Test Directory"
+    - name: "Make User SSH Directory, if does not exists"
       file:
-        path: "/home/user/keeper_test/{{ item }}"
+        path: "/home/user/{{ item }}"
         state: directory
         recurse: yes
       loop:
         - ".ssh"
 
-    - name: "Copy Test SSH Keys"
+    - name: "Copy SSH Keys"
       keeper_copy:
         notation: "OlLZ6JLjnyMOS3CiIPHBjw/field/keyPair[{{ item.notation_key }}]"
-        dest: "/home/user/keeper_test/.ssh/{{ item.filename }}"
+        dest: "/home/user/.ssh/{{ item.filename }}"
         mode: "0600"
       loop:
         - { notation_key: "privateKey", filename: "id_rsa" }
