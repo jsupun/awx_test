@@ -2,9 +2,11 @@
 - name: Playbook One
   hosts: all
   collections: keepersecurity.keeper_secrets_manager
-  include_vars: secrets.yml
 
   tasks:
+    - include_vars:
+        file: secrets.yml
+
     - name: "Make Test Directory"
       file:
         path: "/home/user/keeper_test/{{ item }}"
