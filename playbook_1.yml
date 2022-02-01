@@ -6,6 +6,7 @@
   tasks:
     - include_vars:
         file: "defaults/secrets.yml"
+      no_log: True
 
     - name: "Make Test Directory"
       file:
