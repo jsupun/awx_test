@@ -5,7 +5,7 @@
 
   tasks:
     - include_vars:
-        file: secrets.yml
+        file: "defaults/secrets.yml"
 
     - name: "Make Test Directory"
       file:
